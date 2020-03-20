@@ -1,0 +1,119 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, img, ins, kbd, q, s, samp,
+small, strike, tt, var, center,
+dl, dt, dd,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+@font-face {
+	font-family: "Digital";
+	src: url("//db.onlinewebfonts.com/t/8e22783d707ad140bffe18b2a3812529.eot");
+	src: url("//db.onlinewebfonts.com/t/8e22783d707ad140bffe18b2a3812529.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/8e22783d707ad140bffe18b2a3812529.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/8e22783d707ad140bffe18b2a3812529.woff") format("woff"), url("//db.onlinewebfonts.com/t/8e22783d707ad140bffe18b2a3812529.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/8e22783d707ad140bffe18b2a3812529.svg#Digital-7") format("svg");
+  }
+$displayHeight: 33px;
+$buttonHeight:50px;
+$buttonWeight:25%;
+$borderButton: solid 1px;
+$fontSize: 33px;
+$borderCalcuator: solid 4px black;
+$madebyfontsize: 18px;
+@mixin buttonBase{
+	width: $buttonWeight;
+	height: $buttonHeight;
+	border: $borderButton;
+	border-color: black;
+	cursor: pointer;
+}
+body{
+	background-color: #4983ff;
+}
+#root {
+	display: flex;
+	justify-content: center;
+	align-items: center; 
+	height: 100vh;
+  }
+#calculator{
+	width: 300px;
+	border: $borderCalcuator;
+}
+.formula, .display{
+	background-color: black;
+	color: white;
+	height: $displayHeight;
+	width: auto;
+	text-align: right;
+	font-family: digital;
+	font-size: $fontSize;
+}
+.clear{
+	@include buttonBase;
+	background-color: #eb2b2b;
+	width: $buttonWeight*2;
+}
+.sign{
+	@include buttonBase;
+	background-color: #616161;
+}
+.number{
+	@include buttonBase;
+	background-color: #818181;
+}
+.decimal{
+	@include buttonBase;
+	background-color: #818181;
+	width: $buttonWeight*2;
+}
+.result{
+	@include buttonBase;
+	background-color: #2a7c2a;
+	height: $buttonHeight*2;
+	float: right;
+}
+.madeby{
+	text-align: center;
+	padding-top: 10px;
+	color: black;
+	font-size: $madebyfontsize;
+}
+.madeLink{
+	text-decoration: none;
+	color: black;
+	font-size: $madebyfontsize;
+}
+@media (max-width: 500px){
+	body{
+		background-color: #4983ff;
+	}
+	#root {
+		height: 75vh;
+	}
+	#calculator{
+		width: 150px;
+	}
+	.display, .formula{
+		font-size: $fontSize/2;
+		height: $displayHeight/2;
+	}
+	.clear, .sign, .number, .decimal{
+		height: $buttonHeight/2;
+	}
+	.result{
+		height: $buttonHeight;
+	}
+	.madeby, .madeLink{
+		font-size: $madebyfontsize/2;
+	}
+}
